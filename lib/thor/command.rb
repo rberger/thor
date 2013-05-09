@@ -46,7 +46,7 @@ class Thor
         formatted = "#{namespace.gsub(/^(default)/,'')}:"
       end
       
-      formatted = (klass.respond_to? :subcommand_name) ? "#{klass.subcommand_name} " : "#{klass.namespace.split(':').last} " if subcommand
+      formatted = (klass.respond_to?(:subcommand_name) && (not namespace)) ? "#{klass.subcommand_name} " : "#{klass.namespace.split(':').last} " if subcommand
 
       formatted ||= ""
 

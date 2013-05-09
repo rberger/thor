@@ -25,6 +25,11 @@ describe Thor do
       output = capture(:stdout) { TestSubcommands::Parent.start(%w[sub print_opt --opt output]) }
       expect(output).to eq("output")
     end
+
+    it "includes the subcommand name in the help usage lines" do
+      barn_help = capture(:stdout) { Scripts::MyDefaults.start(%w[barn help open]) }
+      expect(barn_help).to include("thor barn help [COMMAND]  # Describe subcommands or one specific subcommand")
+    end
   end
 
 end
